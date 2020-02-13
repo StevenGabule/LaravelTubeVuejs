@@ -29,7 +29,7 @@ class ChannelController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -62,13 +62,17 @@ class ChannelController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Channel $channel
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Channel $channel)
     {
-        //
+        if ($request->hasFile('image')) {
+            $channel->clearMediaCollection('images');
+            $channel->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+        return redirect()->back();
     }
 
     /**

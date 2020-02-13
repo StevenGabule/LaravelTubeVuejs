@@ -13,8 +13,12 @@ class CreateChannelTable extends Migration
      */
     public function up()
     {
-        Schema::create('channels', function (Blueprint $table) {
+        Schema::create('channels', static function (Blueprint $table) {
             $table->uuid('id');
+            $table->string('name');
+            $table->uuid('user_id');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

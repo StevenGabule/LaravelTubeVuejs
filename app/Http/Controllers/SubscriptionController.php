@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Channel;
 use App\Subscription;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -14,19 +20,27 @@ class SubscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Channel $channel)
     {
-        //
+        return $channel->subscriptions()->create([
+            'user_id' => auth()->id()
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Subscription  $subscription
-     * @return \Illuminate\Http\Response
+     * @param Channel $channel
+     * @param \App\Subscription $subscription
+     * @return void
      */
-    public function destroy(Subscription $subscription)
+    public function destroy(Channel $channel, Subscription $subscription)
     {
-        //
+        if ($subscription->delete()) {
+            return response()->json([
+                'message' => true
+            ]);
+        }
+        return response()->json(['error' => true]);
     }
 }

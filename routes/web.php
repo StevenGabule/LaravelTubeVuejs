@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('channels', 'ChannelController');
 
+
+Route::post('channels/{channel}/videos', [UploadVideoController::class, 'store']);
+Route::get('channels/{channel}/videos', [UploadVideoController::class, 'index'])->name('channel.upload');
 Route::resource('channels/{channel}/subscriptions', 'SubscriptionController');
 
-Route::get('channels/{channel}/videos', [UploadVideoController::class, 'index'])->name('channel.upload');

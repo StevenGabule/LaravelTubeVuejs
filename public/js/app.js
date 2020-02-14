@@ -49226,12 +49226,30 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('subscribe-button', {
   props: {
+    channel: {
+      type: Object,
+      required: true,
+      "default": function _default() {
+        return {};
+      }
+    },
     subscriptions: {
       type: Array,
       required: true,
       "default": function _default() {
         return [];
       }
+    }
+  },
+  computed: {
+    subscribed: function subscribed() {
+      if (!__auth() || this.channel.user_id == __auth().id) return false;
+      return !!this.subscriptions.find(function (subscription) {
+        return subscription.user_id === __auth().id;
+      });
+    },
+    owner: function owner() {
+      return !!(__auth() && this.channel.user_id === __auth().id);
     }
   },
   methods: {

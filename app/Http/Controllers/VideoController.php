@@ -64,16 +64,10 @@ class VideoController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Video  $video
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Video $video)
+    public function update(Video $video)
     {
-        //
+        $video->increment('views');
+        return response()->json([]);
     }
 
     /**

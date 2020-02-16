@@ -20,11 +20,15 @@
 
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.4.1/video-js.min.css">
+    <style>
+        .vjs-default-skin {
+            width: 100%;
+        }
+    </style>
 @endsection
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.4.1/video.min.js"></script>
-<script>
-    videojs('video')
-</script>
+<script>window.CURRENT_VIDEO  = '{{ $video->id }}'</script>
+<script src="{{ asset('js/player.js') }}"></script>
 @endsection

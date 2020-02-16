@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42ab1fe2-6796-459c-8eb2-c3efd4474c15" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UploadVideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UploadVideoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/Videos/ConvertForStreaming.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/Videos/ConvertForStreaming.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_14_160129_create_videos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_14_160129_create_videos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
-    </list>
+    <list default="true" id="42ab1fe2-6796-459c-8eb2-c3efd4474c15" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2020_02_14_160129_create_videos_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+            <state relative-caret-position="408">
+              <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -76,7 +70,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadVideoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
+            <state relative-caret-position="768">
               <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
@@ -441,11 +435,12 @@
       <workItem from="1581694629139" duration="12000" />
       <workItem from="1581694836301" duration="7188000" />
       <workItem from="1581826493245" duration="3397000" />
+      <workItem from="1581861726985" duration="597000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36941000" />
+    <option name="totallyTimeSpent" value="37538000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -459,7 +454,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978166" visible="true" weight="0.30604026" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978166" visible="true" weight="0.31073827" />
       <window_info id="Structure" order="1" sideWeight="0.50073206" side_tool="true" weight="0.1590604" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.5021834" side_tool="true" weight="0.1590604" />
@@ -762,13 +757,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2020-02-14.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="-4121">
-          <caret line="8472" column="32" selection-start-line="8472" selection-start-column="32" selection-end-line="8472" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2020-02-14.log" />
     <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2020-02-16.log">
       <provider selected="true" editor-type-id="LogFileEditorProvider">
         <state relative-caret-position="192">
@@ -795,14 +784,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2020_02_14_160129_create_videos_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+        <state relative-caret-position="408">
+          <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UploadVideoController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="768">
           <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />

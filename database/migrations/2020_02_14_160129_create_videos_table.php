@@ -22,7 +22,7 @@ class CreateVideosTable extends Migration
             $table->text('description')->nullable();
             $table->string('path');
             $table->timestamps();
-        });
+    });
     }
 
     /**

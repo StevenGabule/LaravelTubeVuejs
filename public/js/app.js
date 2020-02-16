@@ -50164,6 +50164,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.config.ignoredElements = ["video-js"];
+
 __webpack_require__(/*! ./components/subscribe-button */ "./resources/js/components/subscribe-button.js");
 
 __webpack_require__(/*! ./components/channel-uploads */ "./resources/js/components/channel-uploads.js");
@@ -50175,7 +50177,7 @@ __webpack_require__(/*! ./components/channel-uploads */ "./resources/js/componen
 
 
 var app = new Vue({
-  el: '#app'
+  el: "#app"
 });
 
 /***/ }),
@@ -50249,8 +50251,16 @@ if (token) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('channel-uploads', {
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("channel-uploads", {
   props: {
     channel: {
       type: Object,
@@ -50264,7 +50274,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('channel-uploads', {
     return {
       selected: false,
       videos: [],
-      progress: {}
+      progress: {},
+      uploads: [],
+      intervals: {}
     };
   },
   methods: {
@@ -50276,14 +50288,41 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('channel-uploads', {
       var uploaders = this.videos.map(function (video) {
         var form = new FormData();
         _this.progress[video.name] = 0;
-        form.append('video', video);
-        form.append('title', video.name);
+        form.append("video", video);
+        form.append("title", video.name);
         return axios.post("/channels/".concat(_this.channel.id, "/videos"), form, {
           onUploadProgress: function onUploadProgress(event) {
             _this.progress[video.name] = Math.ceil(event.loaded / event.total * 100);
 
             _this.$forceUpdate();
           }
+        }).then(function (_ref) {
+          var data = _ref.data;
+          _this.uploads = [].concat(_toConsumableArray(_this.uploads), [data]);
+        });
+      });
+      axios.all(uploaders).then(function () {
+        _this.videos = _this.uploads;
+
+        _this.videos.forEach(function (video) {
+          _this.intervals[video.id] = setInterval(function () {
+            axios.get("/videos/".concat(video.id)).then(function (_ref2) {
+              var data = _ref2.data;
+              console.log(data);
+
+              if (data.percentage === 100) {
+                clearInterval(_this.intervals[video.id]);
+              }
+
+              _this.videos = _this.videos.map(function (v) {
+                if (v.id === data.id) {
+                  return data;
+                }
+
+                return v;
+              });
+            });
+          }, 3000);
         });
       });
     }

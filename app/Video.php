@@ -11,4 +11,9 @@ class Video extends Model
     {
         return $this->belongsTo(Channel::class);
     }
+
+    public function editable()
+    {
+        return auth()->check() && $this->channel->user_id === auth()->user()->id;
+    }
 }

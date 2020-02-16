@@ -19,7 +19,10 @@ window.Vue = require("vue");
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.config.ignoredElements = ["video-js"];
-require("./components/subscribe-button");
+Vue.component(
+    "subscribe-button",
+    require("./components/subscribe-button.vue").default
+);
 require("./components/channel-uploads");
 
 /**

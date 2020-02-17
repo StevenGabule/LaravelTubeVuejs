@@ -24,6 +24,7 @@ Vue.component(
     require("./components/subscribe-button.vue").default
 );
 Vue.component("votes", require("./components/votes.vue").default);
+Vue.component("comments", require("./components/Comments.vue").default);
 require("./components/channel-uploads");
 
 /**

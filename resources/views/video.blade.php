@@ -59,6 +59,8 @@
                     </form>
                 @endif
             </div><!-- end of card -->
+            
+            <comments :video="{{ $video }}"></comments>
         </div><!-- end of col-md-8 -->
     </div><!-- end of row -->
 </div>
@@ -81,6 +83,12 @@
         }
         .thumbs-down {
             margin-left: 1rem;
+        }
+        .w-full {
+            width: 100% !important;
+        }
+        .w-80 {
+            width: 80% !important;
         }
     </style>
 @endsection

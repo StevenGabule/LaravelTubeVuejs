@@ -31,4 +31,4 @@ Route::put('videos/{video}/update',  [VideoController::class, 'update'])->middle
 Route::post('channels/{channel}/videos', [UploadVideoController::class, 'store']);
 Route::get('channels/{channel}/videos', [UploadVideoController::class, 'index'])->name('channel.upload');
 Route::resource('channels/{channel}/subscriptions', 'SubscriptionController');
-
+Route::post('votes/{video}/{type}', 'VoteController@vote')->name('user.vote');

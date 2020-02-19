@@ -15,7 +15,7 @@ class CommentController extends Controller
      */
     public function index(Video $video)
     {
-        return $video->comments()->paginate(2);
+        return $video->comments()->paginate(10);
     }
 
     /**
@@ -47,7 +47,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        return $comment->replies()->paginate(10);
     }
 
     /**

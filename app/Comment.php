@@ -6,10 +6,17 @@ namespace App;
 class Comment extends Model
 {
     protected $with = ['user'];
-    
+    protected $appends = ['repliesCount'];
+
     public function video()
     {
         return $this->belongsTo(Video::class);
+    }
+
+    // accessor
+    public function getRepliesCountAttribute()
+    {
+        return $this->replies->count();
     }
 
     public function user()

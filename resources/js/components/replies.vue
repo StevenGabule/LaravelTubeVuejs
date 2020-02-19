@@ -13,6 +13,11 @@
                 <small>
                     {{ reply.body }}
                 </small>
+                <votes
+                    :default_votes="reply.votes"
+                    :entity_id="reply.id"
+                    :entity_owner="reply.user.id"
+                ></votes>
                 <div class="form-inline my-4 w-full">
                     <input
                         type="text"

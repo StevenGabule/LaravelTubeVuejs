@@ -1748,6 +1748,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1808,6 +1812,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38566,6 +38575,14 @@ var render = function() {
                 _vm._v(" "),
                 _c("small", [_vm._v(_vm._s(comment.body))]),
                 _vm._v(" "),
+                _c("votes", {
+                  attrs: {
+                    default_votes: comment.votes,
+                    entity_id: comment.id,
+                    entity_owner: comment.user.id
+                  }
+                }),
+                _vm._v(" "),
                 _c("replies", { attrs: { comment: comment } })
               ],
               1
@@ -38648,19 +38665,32 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "media-body" }, [
-            _c("h6", { staticClass: "mt-0" }, [
-              _vm._v(_vm._s(reply.user.name))
-            ]),
-            _vm._v(" "),
-            _c("small", [
-              _vm._v(
-                "\n                " + _vm._s(reply.body) + "\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(0, true)
-          ])
+          _c(
+            "div",
+            { staticClass: "media-body" },
+            [
+              _c("h6", { staticClass: "mt-0" }, [
+                _vm._v(_vm._s(reply.user.name))
+              ]),
+              _vm._v(" "),
+              _c("small", [
+                _vm._v(
+                  "\n                " + _vm._s(reply.body) + "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("votes", {
+                attrs: {
+                  default_votes: reply.votes,
+                  entity_id: reply.id,
+                  entity_owner: reply.user.id
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0, true)
+            ],
+            1
+          )
         ])
       }),
       _vm._v(" "),

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Vote;
 use App\Video;
+use App\Channel;
+use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class VoteController extends Controller
 {
@@ -13,8 +16,22 @@ class VoteController extends Controller
       $this->middleware('auth');
   }
 
-  public function vote(Video $video, $type)
+  public function vote($entityId, $type)
   {
-      return auth()->user()->toggleVote($video, $type);
+     $entity = $this->getEntity($entityId); 
+      return auth()->user()->toggleVote($entity, $type);
+  }
+
+  public function getEntity($entityId)
+  {
+    $video  = Video::find($entityId);
+    
+    if ($video) return $video;
+
+    $comment = Comment::find($entityId);
+    
+    if ($comment) return $comment;
+
+    throw new ModelNotFoundException('Entity not found!');
   }
 }

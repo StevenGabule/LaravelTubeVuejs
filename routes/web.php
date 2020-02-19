@@ -23,4 +23,5 @@ Route::get('comments/{comment}/replies', 'CommentController@show');
 Route::post('channels/{channel}/videos', [UploadVideoController::class, 'store']);
 Route::get('channels/{channel}/videos', [UploadVideoController::class, 'index'])->name('channel.upload');
 Route::resource('channels/{channel}/subscriptions', 'SubscriptionController');
-Route::post('votes/{video}/{type}', 'VoteController@vote')->name('user.vote');
+
+Route::post('votes/{entityId}/{type}', 'VoteController@vote')->name('user.vote');

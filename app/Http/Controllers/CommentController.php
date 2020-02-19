@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth')->only(['store', 'edit', 'destroy', 'update']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,15 +32,14 @@ class CommentController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    
+    public function store(Request $request, Video $video)
     {
-        //
+        return auth()->user()->comments()->create([
+            'body' => $request->body,
+            'video_id' => $video->id,
+            'comment_id' => $request->comment_id
+        ])->fresh();
     }
 
     /**

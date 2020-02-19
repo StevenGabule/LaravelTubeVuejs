@@ -5,6 +5,7 @@ namespace App;
 
 class Comment extends Model
 {
+    protected $guarded = [];
     protected $with = ['user', 'votes'];
     protected $appends = ['repliesCount'];
 

@@ -18,15 +18,6 @@
                     :entity_id="reply.id"
                     :entity_owner="reply.user.id"
                 ></votes>
-                <div class="form-inline my-4 w-full">
-                    <input
-                        type="text"
-                        class="form-control form-control-sm w-80"
-                    />
-                    <button type="button" class="btn btn-sm btn-primary">
-                        <small>Add comment</small>
-                    </button>
-                </div>
             </div>
         </div>
         <div

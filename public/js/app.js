@@ -1748,6 +1748,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["video"],
@@ -1848,6 +1849,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1857,7 +1866,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      addingReply: false
+      addingReply: false,
+      body: ""
     };
   },
   props: {
@@ -1866,6 +1876,29 @@ __webpack_require__.r(__webpack_exports__);
       "default": function _default() {
         return {};
       }
+    },
+    video: {
+      required: true,
+      "default": function _default() {
+        return {};
+      }
+    }
+  },
+  methods: {
+    addReply: function addReply() {
+      var _this = this;
+
+      if (!this.body) return;
+      axios.post("/comments/".concat(this.video.id), {
+        comment_id: this.comment.id,
+        body: this.body
+      }).then(function (_ref) {
+        var data = _ref.data;
+        _this.body = "";
+        _this.addingReply = false;
+
+        _this.$refs.replies.addReply(data);
+      });
     }
   }
 });
@@ -1952,6 +1985,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.replies = _objectSpread({}, data, {
           data: [].concat(_toConsumableArray(_this.replies.data), _toConsumableArray(data.data))
         });
+      });
+    },
+    addReply: function addReply(reply) {
+      this.replies = _objectSpread({}, this.replies, {
+        data: [reply].concat(_toConsumableArray(this.replies.data))
       });
     }
   }
@@ -38666,7 +38704,10 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.comments.data, function(comment) {
-        return _c("comment", { key: comment.id, attrs: { comment: comment } })
+        return _c("comment", {
+          key: comment.id,
+          attrs: { comment: comment, video: _vm.video }
+        })
       }),
       _vm._v(" "),
       _c("div", { staticClass: "text-center mt-4" }, [
@@ -38767,15 +38808,40 @@ var render = function() {
           _vm.addingReply
             ? _c("div", { staticClass: "form-inline my-4 w-full" }, [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.body,
+                      expression: "body"
+                    }
+                  ],
                   staticClass: "form-control form-control-sm w-80",
-                  attrs: { type: "text" }
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.body },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.body = $event.target.value
+                    }
+                  }
                 }),
                 _vm._v(" "),
-                _vm._m(0)
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    attrs: { type: "button" },
+                    on: { click: _vm.addReply }
+                  },
+                  [_c("small", [_vm._v("Add reply")])]
+                )
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("replies", { attrs: { comment: _vm.comment } })
+          _c("replies", { ref: "replies", attrs: { comment: _vm.comment } })
         ],
         1
       )
@@ -38783,18 +38849,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-sm btn-primary", attrs: { type: "button" } },
-      [_c("small", [_vm._v("Add reply")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

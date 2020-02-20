@@ -85,6 +85,49 @@
                         @endif
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header">videos</div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Views</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($videos as $video)
+                                    <tr>
+                                    <td>
+                                        <img src="{{ $video->thumbnail }}" alt="" width="40" height="40">
+                                    </td>
+                                    <td>
+                                        {{ $video->title}}
+                                    </td>
+                                    <td>
+                                        {{ $video->views}}
+                                    </td>
+                                    <td>
+                                        {{ $video->percentage === 100 ? 'Live' : 'Processing'}}
+                                    </td>
+                                    <td>
+                                        @if($video->percentage === 100)
+                                        <a href="{{ route('video.show', $video->id) }}" class="btn btn-sm btn-info">
+                                            View
+                                        </a>
+                                        @endif
+                                    </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="row justify-content-center">
+                            {{ $videos->links() }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

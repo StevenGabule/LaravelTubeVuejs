@@ -13,7 +13,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('channels', 'ChannelController');
 
-Route::get('videos/{video}',  [VideoController::class, 'show']);
+Route::get('videos/{video}',  [VideoController::class, 'show'])->name('video.show');
 Route::put('videos/{video}',  [VideoController::class, 'updateViews']);
 Route::put('videos/{video}/update',  [VideoController::class, 'update'])->middleware('auth')->name('videos.update');
 Route::get('videos/{video}/comments', 'CommentController@index');
